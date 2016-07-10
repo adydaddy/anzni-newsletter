@@ -1,0 +1,27 @@
+div.container-fluid
+    div.row.row-margin
+      div.col-md-12
+        div.row
+          div.col-md-2
+            | Sequence
+          div.col-md-2
+            | Category
+          div.col-md-4
+            | Name
+          div.col-md-4
+            | Actions
+     div.row
+        div.col-md-12
+          div.row
+            for val in articles
+              div.col-md-2
+                | #{val.Sequence}
+              div.col-md-2
+                | #{val.Category}
+              div.col-md-4.truncate
+                | #{val.Name}
+              div.col-md-4
+                div.col-md-2
+                  a.editArticleButton(name="editArticleButton" data-val-article-id="#{val._id}"  ) Edit
+                div.col-md-2
+                  a.deleteArticleButton(name="deleteArticleButton" data-val-article-id="#{val._id}"  ) Delete

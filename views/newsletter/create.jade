@@ -1,0 +1,20 @@
+extends ./layout.jade
+block content
+    h1.row-margin.center-block.text-center.row-gap ANZ Newsletter Creation
+    form(method="POST" action="/newsletter/create/")
+      div.container-fluid.left-block
+        div.col-md-12.row.newsletter-name
+          div.col-md-2
+            span Newsletter Name
+          div.col-md-8
+            input(type='text' name='NewsletterName' style='width:100%' class='form-control')
+          div.col-md-2
+            button.btn.btn-submit Next
+        div.container.row-gap.row-margin
+          h2.center-block.text-center Current Newsletters
+          div.newsletters
+              ul
+                for v in newsletters
+                  li
+                    a(href="/newsletter/articles/create/?NewsletterName=#{v}") #{v}
+                    div(style="float:right")

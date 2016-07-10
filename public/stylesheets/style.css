@@ -1,0 +1,49 @@
+/* Basics */
+body {
+    margin: 0 !important;
+    padding: 0;
+    background-color: #ffffff;
+    font-family:verdana;
+}
+table {
+    border-spacing: 0;
+    font-family: sans-serif;
+    color: #333333;
+}
+td {
+    padding: 0;
+}
+img {
+    border: 0;
+}
+div[style*="margin: 16px 0"] {
+    margin:0 !important;
+}
+.wrapper {
+    width: 100%;
+    table-layout: fixed;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+.webkit {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.row-margin
+{margin-bottom:15px;}
+
+.newsletter-name
+{
+  margin-bottom:150px;
+}
+.row-gap
+{
+  margin-bottom:25px;
+  margin-top:25px;
+}
+.truncate {
+  width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

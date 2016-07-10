@@ -1,0 +1,34 @@
+﻿html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title ANZ Connect Newsletter - #{Newsletter}
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // icons
+    link(rel='apple-touch-icon', href='/assets/img/apple-touch-icon.png')
+  body(style='margin: 0;padding: 0;color: #333;background-color: #eee;font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif')
+    p(style='text-align:center;padding-top:10px') Is this email not displaying correctly? &nbsp;
+      a(href="/newsletter/#{articles[0].Newsletter}" target="_blank") View it in your browser
+    .container(style='max-width: 50em;margin: 0 auto;background-color: #fff;')
+      .header(style='color: #eee;background: #1693a6;padding: 1em 1.25em')
+        h1.header-heading(style='margin: 0;font-weight: 500;line-height: 1.1;font-size: 1.5em;text-align: center;width:100%') ANZ Connect Newsletter - #{Newsletter}
+      .content(style='padding: 2em 3em')
+        .main
+        for val, index in articles
+          div.article-container(id="article-container-#{index}")(style='padding-bottom: 60px;padding: 20px;text-align: left;border: 1px solid rgb(22, 147, 166);margin-bottom: 20px;border-left: none;border-right: none;border-top: none')
+            div
+              h4(style='margin: 0 0 0.5em;font-weight: 500;line-height: 1.1;font-size: 0.9em;  font-weight:bold') #{val.Category}
+            div
+              h2(style='margin: 0 0 0.5em;font-weight: bold;line-height: 1.1;font-size: 1.2em;padding-bottom: 15px; color:#1693a6') #{val.Name}
+            div.excerpt(id="excerpt-#{index}")
+              p(style='margin: 0 0 1.5em;line-height: 1.5')
+                | !{val.Excerpt}
+            #val
+              div
+              if val.ExternalUrl != undefined && val.ExternalUrl.length > 0
+                a(href="#{val.ExternalUrl}" target="_blank" style='color: #1693a6;font-weight: 500') Read More
+              else
+                a.show(data-show-id="#{index}" style='color: #1693a6;font-weight: 500' href="http://newsletter.anzni.org/newsletter/#{val.Newsletter}/#article-container-#{index}" target="_blank") Read More
+        .footer(style='font-size:11px')
+            p This email is sent by His Highness Prince Aga Khan Shia Imami Ismaili Council for ANZ (the "Aga Khan Council for Australia and New Zealand”). You are receiving this email because you signed up to be on our mailing list.
+            p His Highness Prince Aga Khan Shia Imami Ismaili Council for Australia and New Zealand

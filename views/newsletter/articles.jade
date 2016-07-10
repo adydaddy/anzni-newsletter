@@ -1,0 +1,76 @@
+extends ./layout.jade
+block content
+  form(id="newsletterForm")
+
+    div.container-fluid.row-margin.center-block.text-center
+      a(href='/newsletter/create') Back To Newsletters
+      h2  Newsletter
+    div.container-fluid.left-block
+      div.col-md-12.row.row-margin
+        div.col-md-2
+          span Name
+        div.col-md-6
+          span #{Newsletter.Newsletter}
+          input(type="hidden" name="Newsletter" value="#{Newsletter.Newsletter}")
+      div.col-md-12.row.row-margin
+        div.col-md-2
+          span Published
+        div.col-md-6
+          if Newsletter.Published == true
+            input(type="checkbox" checked="checked" name="Published" id="Published")
+          else
+            input(type="checkbox"  name="Published" id="Published")
+      div.col-md-12.row.row-margin
+        div.col-md-12.center-block.text-center
+          input(type="submit")
+  form(id="articleForm")
+      div.container-fluid.row-margin.center-block.text-center
+        h2 Create / Edit Article
+      div.container-fluid.left-block
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span Category
+          div.col-md-6
+            input(type='text' id="Category" name='Category' class='form-control')
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span Article Name
+          div.col-md-6
+            input(type='text' id="Name" name='Name' class='form-control')
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span Excerpt
+          div.col-md-10
+            textarea(name='Excerpt' id="Excerpt" class='form-control'  )
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span Content
+          div.col-md-10
+              textarea(name='Content' id="Content" class='form-control' row='3')
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span External Url
+          div.col-md-4
+              input(type='text' name='ExternalUrl' id="ExternalUrl" class='form-control' row='3')
+        div.col-md-12.row.row-margin
+          div.col-md-2
+            span Sequence
+          div.col-md-1
+              input(type='text' name='Sequence' id="Sequence" class='form-control' row='3')
+        div.col-md-12.left-block
+          input(type='hidden' id="Newsletter" name="Newsletter" value="#{Newsletter.Newsletter}")
+          input(type='hidden' id="OldArticle" name="OldArticle")
+          input(type='hidden'  id="_id" name='_id')
+          button(class='btn btn-default' type='submit') Add / Update
+
+      div.container-fluid.row-gap.center-block.text-center
+        h2 Articles
+      div(id='articles')
+        include ./partials/articleList.jade
+      div.center-block.text-center.row-gap
+        a(href="/newsletter/email/#{Newsletter.Newsletter}") View this in email &nbsp; &nbsp; &nbsp;
+        a(href="/newsletter/#{Newsletter.Newsletter}") View this Newsletter
+
+      iframe(id="form_target", name='form_target', style='display:none')
+    form(id="my_form", action='/upload/', target='form_target', method='post', enctype='multipart/form-data', style='width:0px;height:0;overflow:hidden')
+        input(name='image', type='file', onchange="$('#my_form').submit();this.value='';" accept="image/*")

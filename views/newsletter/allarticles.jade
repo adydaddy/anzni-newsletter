@@ -1,0 +1,86 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title ANZ Connect Newsletter - #{Newsletter}
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // icons
+    link(rel='apple-touch-icon', href='/assets/img/apple-touch-icon.png')
+    script(src='https://code.jquery.com/jquery-1.12.4.min.js' integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=' crossorigin='anonymous')
+    script(src='/scripts/jquery-scrollto.js' type='text/javascript')
+
+    script(src='/scripts/newsletter.js' type='text/javascript')
+    link(rel='shortcut icon', href='favicon.ico')
+    // Override CSS file - add your own CS rules
+    link(rel='stylesheet', href='/assets/css/styles.css')
+  body
+    .container
+      .header
+        h1.header-heading ANZ Connect Newsletter - #{Newsletter}
+      .content
+        .main
+          for val, index in articles
+            div.article-container(style="padding-bottom:60px" id="article-container-#{index}")
+                div
+                  h4 #{val.Category}
+                div
+                  h2 #{val.Name}
+                div.container.excerpt(id="excerpt-#{index}")
+                  p !{val.Excerpt}
+                  #val
+                  div
+                  div(style="float:right")
+                    a.top(href="#") Top
+                  if val.ExternalUrl != undefined && val.ExternalUrl.length > 0
+                    a(href="#{val.ExternalUrl}" target="_blank") Read More
+                  else
+                    a.show(data-show-id="#{index}") Read More
+                div.container.article(id="article-#{index}" style="display:none")
+                  p !{val.Content}
+                  div(style="float:right")
+                    a.top(href="#") Top
+                  div
+                    a.hide(data-show-id="#{index}") Read Less
+                    end
+
+          .footer.container-fluid
+                div.links
+                  h2 Recommended links to Websites of Interest
+                  ul
+                    li
+                      a(href='http://akdn.org' target="_blank") Aga Khan Development Network (AKDN)
+                    li
+                      a(href='http://www.theismaili.org' target="_blank") The Ismaili
+                    li
+                      a(href='http://www.iis.ac.uk' target="_blank") Institute of Ismaili Studies
+                    li
+                      a(href='http://akdn.org' target="_blank") Aga Khan Program for Islamic Architecture (AKPIA)
+                    li
+                      a(href='http://akdn.org/focus' target="_blank") Focus
+                    li
+                      a(href='http://www.agakhanmuseum.org' target="_blank") Aga Khan Museum
+                    li
+                      a(href='http://www.akdn.org/Content/1111/App-for-Aga-Khan-Award-for-Architecture-Now-Available' target="_blank") App for Aga Khan Award for Architecture
+                    li
+                      a(href='http://www.aku.edu/' target="_blank") Aga Khan University
+                    li
+                      a(href='http://www.agakhanacademies.org/' target="_blank") Aga Khan Academies
+                    li
+                      a(href='http://www.bl.uk/learning/cult/sacred/understanding/' target="_blank") Understanding Sacred Texts - British Library
+                    li
+                      a(href='https://www.ipnonline.net/' target="_blank") IPNOnline.net
+                    li
+                      a(href='http://ocp.hul.harvard.edu/ihp/manuscripts.html' target="_blank") IHP Manuscripts at Harvard University
+                    li
+                      a(href='http://www.usc.edu/org/cmje/religious-texts/quran/' target="_blank") Quranic Translations from different sources (Yusuf Ali, Pickthal, Shakir)
+                    li
+                      a(href='http://ihpaonline.org/' target="_blank" ) IHPAOnline.net
+                    li
+                      a(href='http://www.prophetictimeline.com/Prophet/Timeline.php' target="_blank") Interactive Prophetic Timeline
+                    li
+                      a(href='http://www.1001inventions.com/media/video/library' target="_blank") 1001 Inventions and The Library of Secrets
+                    li
+                      a(href='http://www.pluralism.ca/en/' target="_blank") Global Centre of Pluralism
+                    li
+                      a(href='http://tanzil.net/' target="_blank") Interactive Quranic Website
