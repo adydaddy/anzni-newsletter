@@ -24,9 +24,12 @@ html(lang='en')
             div.article-container(style="padding-bottom:60px" id="article-container-#{index}")
                 div
                   h4 #{val.Category}
-                div
-                  h2 #{val.Name}
-                div.container.excerpt(id="excerpt-#{index}")
+                div(style="clear:both")
+                  div(style="float:left")
+                    h2 #{val.Name}
+                  div(style="float:right")
+                    a.hide(data-show-id="#{index}" style="display:none") Read Less
+                div.container.excerpt(id="excerpt-#{index}" style="clear:both")
                   p !{val.Excerpt}
                   #val
                   div
@@ -36,7 +39,7 @@ html(lang='en')
                     a(href="#{val.ExternalUrl}" target="_blank") Read More
                   else
                     a.show(data-show-id="#{index}") Read More
-                div.container.article(id="article-#{index}" style="display:none")
+                div.container.article(id="article-#{index}" style="display:none;clear:both")
                   p !{val.Content}
                   div(style="float:right")
                     a.top(href="#") Top

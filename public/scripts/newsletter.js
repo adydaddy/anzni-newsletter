@@ -4,6 +4,7 @@ $("a.show").click(function() {
   var element = $(this).attr("data-show-id");
   $("#article-" + element).slideToggle('medium');
   $("#excerpt-" + element).slideToggle('medium');
+  $("a.hide").show();
 });
 
 $("a.hide").click(function() {
@@ -11,6 +12,7 @@ $("a.hide").click(function() {
   $("#article-" + element).slideToggle('medium');
   $("#excerpt-" + element).slideToggle('medium');
   $("#article-container-" + element).ScrollTo({ duration: 500,   durationMode: 'all'});
+  $("a.hide").hide();
 });
 
 });
