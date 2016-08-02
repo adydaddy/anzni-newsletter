@@ -28,7 +28,7 @@ html(lang='en')
                   div(style="float:left")
                     h2 #{val.Name}
                   div(style="float:right")
-                    a.hide(data-show-id="#{index}" style="display:none") Read Less
+                    a.hide(data-show-id="#{index}" id="hide-#{index}" style="display:none") Read Less
                 div.container.excerpt(id="excerpt-#{index}" style="clear:both")
                   p !{val.Excerpt}
                   #val
@@ -37,14 +37,14 @@ html(lang='en')
                     a.top(href="#") Top
                   if val.ExternalUrl != undefined && val.ExternalUrl.length > 0
                     a(href="#{val.ExternalUrl}" target="_blank") Read More
-                  else
+                  else if val.Content != undefined && val.Content.length > 0
                     a.show(data-show-id="#{index}") Read More
                 div.container.article(id="article-#{index}" style="display:none;clear:both")
                   p !{val.Content}
                   div(style="float:right")
                     a.top(href="#") Top
                   div
-                    a.hide(data-show-id="#{index}") Read Less
+                    a.hide(data-show-id="#{index}" ) Read Less
                     end
 
           .footer.container-fluid
