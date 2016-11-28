@@ -29,7 +29,7 @@ module.exports = {
   },
 
   saveArticle: function(article) {
-    return articleItem.findOneAndUpdate({Name: article.OldArticle}, {$set:{Name:article.Name, Category: article.Category, ExternalUrl: article.ExternalUrl, Excerpt:article.Excerpt, Content:article.Content, Newsletter:article.Newsletter, Sequence: article.Sequence}}, {new: true, upsert:true})
+    return articleItem.findOneAndUpdate({Name: article.OldArticle, Newsletter:article.Newsletter}, {$set:{Name:article.Name, Category: article.Category, ExternalUrl: article.ExternalUrl, Excerpt:article.Excerpt, Content:article.Content, Newsletter:article.Newsletter, Sequence: article.Sequence}}, {new: true, upsert:true})
   },
 
   deleteArticle: function(Id) {

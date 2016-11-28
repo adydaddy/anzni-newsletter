@@ -75,7 +75,6 @@ app.get('/newsletter/articles/create/', function(req, res) {
 app.put('/newsletter/article', function(req, res)
 {
   authService.authenticate(req, res, app);
-  console.log(req.body._id);
   articleDA.saveArticle(req.body).then( () => {
     articleDA.getArticlesByNewsletter(req.body.Newsletter).then( articleList => {
       res.render('newsletter/partials/articleList', {articles : articleList});
@@ -86,7 +85,7 @@ app.put('/newsletter/article', function(req, res)
 app.put('/newsletter', function(req, res)
 {
   authService.authenticate(req, res, app);
-  articleDA.saveNewsletter(req.params('NewsletterName')).then( () => {
+  articleDA.updateNewsletter({Newsletter:req.body.Newsletter, Published: req.body.Published == "on" ? true : false}).then( () => {
       res.status(200).send("ok");
   });
 })
